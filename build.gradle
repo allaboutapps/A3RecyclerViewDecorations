@@ -9,8 +9,6 @@ buildscript {
     }
 }
 
-group = 'at.allaboutapps.recyclerview'
-
 allprojects {
     repositories {
         jcenter()

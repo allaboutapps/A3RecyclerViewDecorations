@@ -3,6 +3,8 @@ plugins {
 }
 apply plugin: 'com.android.library'
 
+group = 'at.allaboutapps.recyclerview'
+version = '1.0.2'
 
 android {
     compileSdkVersion 25
@@ -29,8 +31,9 @@ bintray {
         name = 'at.allaboutapps.recyclerview.a3recyclerview-decorations'
 
         version {
-            name = '0.0.1'
+            name = project.version
             desc = ''
+            vcsTag = System.getenv('TRAVIS_TAG')
         }
 
         licenses = ['MIT']
