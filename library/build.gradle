@@ -29,12 +29,12 @@ bintray {
         name = 'at.allaboutapps.recyclerview.a3recyclerview-decorations'
 
         version {
-            name = '0.0.1-SNAPSHOT'
+            name = '0.0.1'
             desc = ''
         }
 
         licenses = ['MIT']
-        vcsUrl = 'https://github.com/allaboutapps/a3utilities.git'
+        vcsUrl = 'https://github.com/allaboutapps/A3RecyclerViewDecorations'
         websiteUrl = 'http://www.allaboutapps.at'
     }
     configurations = ['archives']
