@@ -2,9 +2,10 @@ plugins {
     id "com.jfrog.bintray" version "1.7.3"
 }
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'at.allaboutapps.recyclerview'
-version = '1.0.0'
+version = '1.0.1'
 
 android {
     compileSdkVersion 25
@@ -16,10 +17,6 @@ android {
         minSdkVersion 11
         targetSdkVersion 25
     }
-}
-
-dependencies {
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
 }
 
 bintray {
@@ -61,3 +58,10 @@ task generateJavadocsJar(type: Jar) {
 
 generateJavadocsJar.dependsOn generateJavadocs
 
+artifacts {
+    archives generateSourcesJar
+}
+
+dependencies {
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+}
