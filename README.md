@@ -1,4 +1,4 @@
-# A3Utilities
+# A3RecyclerViewDecorations
 
 [![Build Status](https://travis-ci.org/allaboutapps/a3utilities.svg?branch=master)](https://travis-ci.org/allaboutapps/a3utilities)
 [![Download](https://api.bintray.com/packages/allaboutapps/A3-Android/at.allaboutapps.a3utilities/images/download.svg) ](https://bintray.com/allaboutapps/A3-Android/at.allaboutapps.a3utilities/_latestVersion)
