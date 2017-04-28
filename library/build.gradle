@@ -23,7 +23,7 @@ dependencies {
 bintray {
     user = 'allaboutapps'
     // read pw from secure travis.yml
-    key = System.env['BINTRAY_KEY'] ? System.env['BINTRAY_KEY'] : "nokey"
+    key = System.properties['BINTRAY_KEY'] != null ? System.properties['BINTRAY_KEY'] : "nokey"
     pkg {
         repo = 'A3-Android'
         name = 'at.allaboutapps.recyclerview.a3recyclerview-decorations'
