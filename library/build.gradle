@@ -1,0 +1,59 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    archivesBaseName = 'a3recyclerview-decorations'
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 25
+    }
+}
+
+dependencies {
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+}
+
+bintray {
+    user = 'allaboutapps'
+    // read pw from secure travis.yml
+    key = System.env['BINTRAY_KEY'] ? System.env['BINTRAY_KEY'] : "nokey"
+    pkg {
+        repo = 'A3-Android'
+        name = 'at.allaboutapps.recyclerview.a3recyclerview-decorations'
+
+        version {
+            name = '0.0.1'
+            desc = ''
+        }
+
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/allaboutapps/a3utilities.git'
+        websiteUrl = 'http://www.allaboutapps.at'
+    }
+    configurations = ['archives']
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavadocsJar.dependsOn generateJavadocs
+

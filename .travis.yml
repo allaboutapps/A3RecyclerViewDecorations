@@ -1,0 +1,36 @@
+language: android
+jdk: oraclejdk8
+android:
+  components:
+  - build-tools-25.0.2
+  - android-25
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - extra-android-m2repository
+install:
+- echo y | android update sdk -u -a -t tools
+- echo y | android update sdk -u -a -t platform-tools
+- echo y | android update sdk -u -a -t build-tools-25.0.2
+- echo y | android update sdk -u -a -t android-25
+- echo y | android update sdk -u -a -t extra-google-m2repository
+- echo y | android update sdk -u -a -t extra-android-m2repository
+before_install:
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+script:
+- "./gradlew build"
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+  - "$HOME/.android/build-cache"
+env:
+  global:
+    secure: z+0HSJq66M2ZicgvaYh02QgV19q9FZXD8/upZutDyvIjTBkWcub8qwo3I5wFzROM+PD3ge2TKg+vEHXyhwg7RLXHLYNaxSIhSwcM8bcLx3It8wFkKzeB+tFhMPhxnVvqNNxMbFs0622FIJ3Vw3BuO9oBg9dkt2jWK6tt1atYg95uLXt9BBjqY+zkH3tk+0y7muSJlj0f+XWDzCLuxzXMBcdtdcwdEP0xjSHq8sy6SzokUlqyMpsAs1l3Hmk0UseizkS0CtFWAV5M/wN/F61U+xIQ5SW5E324l3RdMfx48WSt+yOCZaafRMwsRBfvlb8hm01L8fqiEIpezbFEJGAnUrGkQtppO65flt8SoqcZ6hzsCvAKEX5egopRaOhDf/yY7RBBuYJGoxDZaNhGpyqPgGPFfLLPyv6KAduCA5oAVkRihgQ2qKw+YyQ/gZfgIm5AVhDE9VWROhmjppuDOM8r7bqs6GLsq1Qu+ON+yU8rz6Zz6pH0t8jSxTp9Ik2WMF0LqmjPirKdCXVe2PKcMv+dMim9KLPYgpNDnmn+3collzf6m8d79idHu8j0b/gJHZx3YsgJrBjF21HRYZB3Dq0D+oT643PqBHgS1xtOowinl16ZYSVFjPaCHROOL8KUEDv8uufts+MuMfWMc9qAZ8Jjua4p7dQWmVUYvh7p4CX3hb0=
+deploy:
+  provider: script
+  script: "./gradlew bintrayUpload"
