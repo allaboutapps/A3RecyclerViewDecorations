@@ -9,13 +9,16 @@ import android.view.View;
 /**
  * Loops through the values passed in and draws a background behind the views. Pass in {@code 0} to
  * draw nothing.
- *
+ * <p>
  * <pre>{@code
  * recyclerView.addItemDecoration(new A3AlternatingBackgroundDecoration(0, Color.RED));
  * }</pre>
  */
 public class A3AlternatingBackgroundDecoration extends RecyclerView.ItemDecoration {
 
+  /**
+   * Constant for not drawing behind every nth view.
+   */
   public static final int COLOR_NONE = 0;
 
   private final Paint mPaint;
@@ -24,7 +27,7 @@ public class A3AlternatingBackgroundDecoration extends RecyclerView.ItemDecorati
   /**
    * Draws a background behind the views, cycling through the colors passed in.
    *
-   * @param colors a list of colors, or {@code 0} for no background.
+   * @param colors a list of colors, or {@link #COLOR_NONE} for no background.
    */
   public A3AlternatingBackgroundDecoration(@ColorInt int... colors) {
     mColors = colors;
@@ -41,10 +44,12 @@ public class A3AlternatingBackgroundDecoration extends RecyclerView.ItemDecorati
 
     for (int i = 0; i < childCount; i++) {
       final View child = parent.getChildAt(i);
-      final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+      final RecyclerView.ViewHolder holder = parent.getChildViewHolder(child);
 
-      final int position = params.getViewAdapterPosition();
-      final int color = mColors[position % colorCount];
+      final int position = holder.getAdapterPosition();
+      final int sanitizedPosition = position < 0 ? holder.getOldPosition() : position;
+
+      final int color = mColors[sanitizedPosition % colorCount];
 
       if (color == COLOR_NONE) {
         continue;

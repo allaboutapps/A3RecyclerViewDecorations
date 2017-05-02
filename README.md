@@ -5,8 +5,10 @@
 
 ## This library contains the following decorations
 
-* A3AlternatingBackgroundDecoration
-* A3SeparatorDecoration
+* **A3AlternatingBackgroundDecoration**  
+  Set background colors for items
+* **A3SeparatorDecoration**  
+  Simple divider between items in a `RecyclerView`
 
 ## Including it in your project
 
