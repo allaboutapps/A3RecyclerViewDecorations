@@ -2,9 +2,9 @@ package at.allaboutapps.recyclerview.decorations;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.ColorInt;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.annotation.ColorInt;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Loops through the values passed in and draws a background behind the views. Pass in {@code 0} to

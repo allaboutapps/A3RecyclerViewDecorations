@@ -8,8 +8,7 @@ group = 'at.allaboutapps.recyclerview'
 version = '1.0.2'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 29
 
     archivesBaseName = 'a3recyclerview-decorations'
 
@@ -63,5 +62,5 @@ artifacts {
 }
 
 dependencies {
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
