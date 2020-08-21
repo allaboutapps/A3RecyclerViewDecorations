@@ -8,13 +8,13 @@ group = 'at.allaboutapps.recyclerview'
 version = '1.0.2'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     archivesBaseName = 'a3recyclerview-decorations'
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 25
+        targetSdkVersion 30
     }
 }
 
